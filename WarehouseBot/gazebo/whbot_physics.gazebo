@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<robot>
+
+	<gazebo reference="wheel_r">
+		<mu1 value="4.0"/>
+		<mu2 value="1.0"/>
+		<fdir1 value="1 0 0"/>
+	</gazebo>
+
+	<gazebo reference="wheel_l">
+		<mu1 value="4.0"/>
+		<mu2 value="1.0"/>
+		<fdir1 value="1 0 0"/>
+	</gazebo>
+
+</robot>

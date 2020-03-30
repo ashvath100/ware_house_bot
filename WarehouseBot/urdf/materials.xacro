@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<robot>
+
+  <material name="silver">
+    <color rgba="0.827 0.827 0.827 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="darkgrey">
+    <color rgba="0.2 0.2 0.2 1"/>
+  </material>
+
+  <material name="technogreen">
+    <color rgba="0.169 0.702 0.69 1"/>
+  </material>
+
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0 0 0.5 1"/>
+  </material>
+
+</robot>

@@ -1,0 +1,851 @@
+<?xml version="1.0" ?>
+
+<robot name="warehousebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find warehouse_bot)/urdf/materials.xacro"/>
+  <xacro:include filename="$(find warehouse_bot)/urdf/macros.xacro"/>
+  <xacro:include filename="$(find warehouse_bot)/gazebo/whbot_materials.gazebo"/>
+  <xacro:include filename="$(find warehouse_bot)/gazebo/whbot_plugins.gazebo"/>
+  <xacro:include filename="$(find warehouse_bot)/gazebo/whbot_physics.gazebo"/>
+  <xacro:include filename="$(find warehouse_bot)/urdf/_d435.urdf.xacro" />
+  
+  <!--______________ROBOT BASE_________________-->
+
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.04802943179493546 0.0204222735414395 -0.0018642017097094744"/>
+      <mass value="2.577906496605261"/>
+      <inertia ixx="0.811023" ixy="-0.0" ixz="0.001212" iyy="0.962104" iyz="-0.0" izz="1.748359"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/base_link_m-binary.stl"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/base_link_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="motor_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.05747388560706437 0.07451598591922264 -2.7354145803321073e-07"/>
+      <mass value="4.26377"/>
+      <inertia ixx="0.039281" ixy="0.010046" ixz="0.0" iyy="0.01917" iyz="-0.0" izz="0.050241"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.135192 0.184578 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/motor_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.135192 0.184578 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/motor_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="motor_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.05747388560706437 -0.07451543883628794 -2.735414578319828e-07"/>
+      <mass value="4.26377"/>
+      <inertia ixx="0.039281" ixy="-0.010046" ixz="0.0" iyy="0.01917" iyz="0.0" izz="0.050241"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.135192 -0.225422 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/motor_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.135192 -0.225422 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/motor_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-1.5737411374061594e-14 0.019050270486729 -2.73541461350002e-07"/>
+      <mass value="0.7251890398888428"/>
+      <inertia ixx="0.001157" ixy="-0.0" ixz="0.0" iyy="0.002138" iyz="0.0" izz="0.001157"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.135192 0.244776 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/wheel_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="darkgrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.135192 0.244776 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/wheel_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="wheel_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-1.5792922525292852e-14 -0.01904972340379335 -2.7354146084346276e-07"/>
+      <mass value="0.7251890398888428"/>
+      <inertia ixx="0.001157" ixy="-0.0" ixz="0.0" iyy="0.002138" iyz="-0.0" izz="0.001157"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.135192 -0.28562 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/wheel_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="darkgrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.135192 -0.28562 -0.037678"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/wheel_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="caster">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-2.220446049250313e-16 2.7354146808419855e-07 -0.0067502735414599856"/>
+      <mass value="0.0958839210616834"/>
+      <inertia ixx="8e-06" ixy="0.0" ixz="-0.0" iyy="8e-06" iyz="-0.0" izz="1.2e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.25 -0.020422 0.020422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/caster_1_m-binary.stl"/>
+      </geometry>
+      <material name="darkgrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.25 -0.020422 0.020422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/caster_1_m-binary.stl"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0</mu>
+            <mu2>0</mu2>
+            <slip1>1.0</slip1>
+            <slip2>1.0</slip2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+
+  <!--__________________LIDAR_____________________-->
+
+  <link name="lidar_base">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-2.0857979859956188e-07 1.9886269344432383e-07 0.009299726417219933"/>
+      <mass value="0.08871268038654458"/>
+      <inertia ixx="3.4e-05" ixy="0.0" ixz="0.0" iyy="3.4e-05" iyz="-0.0" izz="6.4e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.410014 -0.021582 -0.199578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/lidar_base_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.410014 -0.021582 -0.199578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/lidar_base_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="lidar_sensor">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0013828885405228197 -6.096293372719053e-07 0.010964227891944844"/>
+      <mass value="0.08969617484626062"/>
+      <inertia ixx="3.5e-05" ixy="0.0" ixz="0.0" iyy="3.2e-05" iyz="-0.0" izz="5.9e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.410014 -0.021582 -0.218178"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/lidar_sensor_1_m-binary.stl"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.410014 -0.021582 -0.218178"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/lidar_sensor_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--______________ROBOT INCLUSION_________________-->
+
+  <link name="upperplate">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0004020188441992423 2.735414647986323e-07 0.009999726458540192"/>
+      <mass value="2.071850360962658"/>
+      <inertia ixx="1.618443" ixy="-0.0" ixz="0.0" iyy="2.315952" iyz="-0.0" izz="3.930379"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05 -0.020422 -0.079578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/upperplate_1_m-binary.stl"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.05 -0.020422 -0.079578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/upperplate_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="topcover">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.3504192366865849 -0.00020454098057712602 0.06277149895637299"/>
+      <mass value="0.85424731700951"/>
+      <inertia ixx="0.098734" ixy="-1.3e-05" ixz="-0.000661" iyy="0.120567" iyz="-0.0" izz="0.215625"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.465014 -0.021614 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/topcover_1_m-binary.stl"/>
+      </geometry>
+      <material name="technogreen"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.465014 -0.021614 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/topcover_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="sidecover">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.36558254155802533 2.735414929254387e-07 -0.0498743241531603"/>
+      <mass value="0.6683445613539936"/>
+      <inertia ixx="0.076275" ixy="-0.0" ixz="-9e-06" iyy="0.094733" iyz="-0.0" izz="0.168844"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.395 -0.020422 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/sidecover_1_m-binary.stl"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.395 -0.020422 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/sidecover_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--______________SCISSOR LIFT_________________-->
+
+  <link name="scissorbase">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.002905674640930639 2.0141302827549057e-06 0.013971079069208539"/>
+      <mass value="0.48585574122343695"/>
+      <inertia ixx="0.090202" ixy="-5.7e-05" ixz="-0.000441" iyy="0.188034" iyz="-0.0" izz="0.274459"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.075014 -0.021386 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/scissorbase_1_m-binary.stl"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.075014 -0.021386 -0.099578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/scissorbase_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="scissortop">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0035991491474214737 1.7322508508998968e-06 -0.013601114655512503"/>
+      <mass value="0.5574057411325024"/>
+      <inertia ixx="0.104478" ixy="-0.000105" ixz="0.000634" iyy="0.284321" iyz="0.0" izz="0.384562"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.120014 -0.021413 -0.349578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/scissortop_1_m-binary.stl"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.120014 -0.021413 -0.349578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/scissortop_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="suction">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.013594525081141007 7.4638566614944335e-06 0.03721640455714065"/>
+      <mass value="0.12416817650772736"/>
+      <inertia ixx="0.007177" ixy="4e-06" ixz="-8.2e-05" iyy="0.000547" iyz="-0.0" izz="0.007025"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.199986 -0.021226 -0.349578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/suction_1_m-binary.stl"/>
+      </geometry>
+      <material name="technogreen"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.199986 -0.021226 -0.349578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/suction_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--___________________REALSENSE______________________-->
+
+  <sensor_d435 parent="suction">
+    <origin xyz="0.02 1.1e-05 0.08" rpy="0 0 0"/>
+  </sensor_d435>
+  
+  <!--
+  <link name="realsense">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-1.0771722352975743e-07 2.0925579519853743e-07 0.012499726417219859"/>
+      <mass value="0.05607065708127023"/>
+      <inertia ixx="3.7e-05" ixy="0.0" ixz="-0.0" iyy="6e-06" iyz="0.0" izz="3.7e-05"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.179986 -0.021237 -0.429578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/realsense_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.179986 -0.021237 -0.429578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/realsense_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+-->
+
+  <!--______________ULTRASONIC SENSORS_________________-->
+
+  <link name="ultrasonic_front">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.006809983344012227 2.735173125142931e-07 -2.731501565073069e-07"/>
+      <mass value="0.007121792624658381"/>
+      <inertia ixx="1e-06" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.385 -0.020422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.385 -0.020422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_front_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.004815220184230751 0.004815493691536277 -2.7315014937412396e-07"/>
+      <mass value="0.007121792624658381"/>
+      <inertia ixx="1e-06" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.338839 -0.269261 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.338839 -0.269261 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_mid_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="2.4155198674602474e-11 0.006810256885478538 -2.7315014824308426e-07"/>
+      <mass value="0.0071217926246584145"/>
+      <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05 -0.305422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_mid_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.05 -0.305422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_mid_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_back_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.006809983344012394 2.735656213226356e-07 -2.731501509006806e-07"/>
+      <mass value="0.0071217926246584145"/>
+      <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.285 -0.220422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_back_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.285 -0.220422 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_back_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_front_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.004815220184230029 -0.004814946608603571 -2.731501634253841e-07"/>
+      <mass value="0.007121792624658381"/>
+      <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.338839 0.228417 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.338839 0.228417 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_front_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_mid_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="2.415526112464761e-11 -0.006809709802546637 -2.73150164611935e-07"/>
+      <mass value="0.0071217926246584145"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05 0.264578 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_mid_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.05 0.264578 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_mid_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="ultrasonic_back_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0068099833440122826 2.7351731041180827e-07 -2.7315016193352193e-07"/>
+      <mass value="0.0071217926246584145"/>
+      <inertia ixx="1e-06" ixy="-0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="1e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.285 0.179578 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_back_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.285 0.179578 -0.044578"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/ultrasonic_back_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--______________ULTRASONIC BRACKETS_________________-->
+
+  <link name="usbracket_front">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.006325757575757596 2.735414678517456e-07 0.0220830597918734"/>
+      <mass value="0.02332"/>
+      <inertia ixx="1.4e-05" ixy="-0.0" ixz="-2e-06" iyy="9e-06" iyz="-0.0" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.3725 -0.020422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.3725 -0.020422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_front_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.004472986077960317 0.004473259619427239 0.022083059791880213"/>
+      <mass value="0.02332"/>
+      <inertia ixx="1.1e-05" ixy="2e-06" ixz="-1e-06" iyy="1.1e-05" iyz="-1e-06" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.33 -0.260422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.33 -0.260422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_mid_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-1.1796119636642288e-16 0.006326031117224684 0.022083059791881295"/>
+      <mass value="0.02332"/>
+      <inertia ixx="9e-06" ixy="0.0" ixz="0.0" iyy="1.4e-05" iyz="-2e-06" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05 -0.292922 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_mid_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.05 -0.292922 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_mid_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_back_l">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.006325757575757651 2.7354146689417824e-07 0.02208305979187899"/>
+      <mass value="0.02332"/>
+      <inertia ixx="1.4e-05" ixy="-0.0" ixz="2e-06" iyy="9e-06" iyz="0.0" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.2725 -0.220422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_back_l_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.2725 -0.220422 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_back_l_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_front_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.004472986077959984 -0.004472712536493423 0.022083059791866772"/>
+      <mass value="0.02332"/>
+      <inertia ixx="1.1e-05" ixy="-2e-06" ixz="-1e-06" iyy="1.1e-05" iyz="1e-06" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.33 0.219578 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.33 0.219578 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_front_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_mid_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-4.85722573273506e-17 -0.006325484034291284 0.022083059791865638"/>
+      <mass value="0.02332"/>
+      <inertia ixx="9e-06" ixy="0.0" ixz="-0.0" iyy="1.4e-05" iyz="2e-06" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05 0.252078 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_mid_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.05 0.252078 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_mid_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="usbracket_back_r">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.006325757575757651 2.735414667276448e-07 0.022083059791867945"/>
+      <mass value="0.02332"/>
+      <inertia ixx="1.4e-05" ixy="0.0" ixz="2e-06" iyy="9e-06" iyz="0.0" izz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.2725 0.179578 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_back_r_1_m-binary.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.2725 0.179578 0.000422"/>
+      <geometry>
+        <mesh filename="package://warehouse_bot/meshes/usbracket_back_r_1_m-binary.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--___________________JOINTS______________________-->
+
+  <joint name="motorr_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.135192 -0.184578 0.037678"/>
+    <parent link="base_link"/>
+    <child link="motor_r"/>
+  </joint>
+
+  <joint name="motorl_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.135192 0.225422 0.037678"/>
+    <parent link="base_link"/>
+    <child link="motor_l"/>
+  </joint>
+
+  <joint name="motor_r" type="continuous">
+    <origin rpy="0 0 0" xyz="0.0 -0.060198 0.0"/>
+    <parent link="motor_r"/>
+    <child link="wheel_r"/>
+    <axis xyz="0.0 0.01 -0.0"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint name="motor_l" type="continuous">
+    <origin rpy="0 0 0" xyz="0.0 0.060198 0.0"/>
+    <parent link="motor_l"/>
+    <child link="wheel_l"/>
+    <axis xyz="0.0 0.01 -0.0"/>
+    <joint_properties damping="1.0" friction="1.0"/>
+  </joint>
+
+  <joint name="caseter_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.25 0.020422 -0.020422"/>
+    <parent link="base_link"/>
+    <child link="caster"/>
+  </joint>
+
+  <joint name="upperplate_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.05 0.020422 0.079578"/>
+    <parent link="base_link"/>
+    <child link="upperplate"/>
+  </joint>
+
+  <joint name="topcover_upperplate" type="fixed">
+    <origin rpy="0 0 0" xyz="0.345 0.0 0.02"/>
+    <parent link="upperplate"/>
+    <child link="topcover"/>
+  </joint>
+
+  <joint name="lidar_internal" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0186"/>
+    <parent link="lidar_base"/>
+    <child link="lidar_sensor"/>
+  </joint>
+
+  <joint name="lidar_topcover" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.055 -3.2e-05 0.1"/>
+    <parent link="topcover"/>
+    <child link="lidar_base"/>
+  </joint>
+
+  <joint name="usjointfront" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0125 0.0 0.045"/>
+    <parent link="usbracket_front"/>
+    <child link="ultrasonic_front"/>
+  </joint>
+
+  <joint name="usjointfront_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.3725 0.020422 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_front"/>
+  </joint>
+
+  <joint name="usjointfrontleft" type="fixed">
+    <origin rpy="0 0 0" xyz="0.008839 0.008839 0.045"/>
+    <parent link="usbracket_front_l"/>
+    <child link="ultrasonic_front_l"/>
+  </joint>
+
+  <joint name="usjointleft" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0125 0.045"/>
+    <parent link="usbracket_mid_l"/>
+    <child link="ultrasonic_mid_l"/>
+  </joint>
+
+  <joint name="usjointbackleft" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.0125 0.0 0.045"/>
+    <parent link="usbracket_back_l"/>
+    <child link="ultrasonic_back_l"/>
+  </joint>
+
+  <joint name="usjointfrontleft_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.33 0.260422 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_front_l"/>
+  </joint>
+
+  <joint name="usjointleft_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.05 0.292922 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_mid_l"/>
+  </joint>
+
+  <joint name="usjointbackleft_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.2725 0.220422 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_back_l"/>
+  </joint>
+
+  <joint name="sidecover_topcover" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <parent link="topcover"/>
+    <child link="sidecover"/>
+  </joint>
+
+  <joint name="usjointbackright" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.0125 0.0 0.045"/>
+    <parent link="usbracket_back_r"/>
+    <child link="ultrasonic_back_r"/>
+  </joint>
+
+  <joint name="usjointright" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 -0.0125 0.045"/>
+    <parent link="usbracket_mid_r"/>
+    <child link="ultrasonic_mid_r"/>
+  </joint>
+
+  <joint name="usjointfrontright" type="fixed">
+    <origin rpy="0 0 0" xyz="0.008839 -0.008839 0.045"/>
+    <parent link="usbracket_front_r"/>
+    <child link="ultrasonic_front_r"/>
+  </joint>
+
+  <joint name="usjointright_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.05 -0.252078 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_mid_r"/>
+  </joint>
+
+  <joint name="usjointfrontright_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="0.33 -0.219578 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_front_r"/>
+  </joint>
+
+  <joint name="usjointbackright_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.2725 -0.179578 -0.000422"/>
+    <parent link="base_link"/>
+    <child link="usbracket_back_r"/>
+  </joint>
+
+  <joint name="scissorbottomplate_baselink" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.045 -2.7e-05 0.02"/>
+    <parent link="upperplate"/>
+    <child link="scissorbase"/>
+  </joint>
+
+  <!--
+  <joint name="realsense_suction" type="fixed">
+    <origin rpy="0 0 0" xyz="0.02 1.1e-05 0.08"/>
+    <parent link="suction"/>
+    <child link="realsense"/>
+  </joint>
+  -->
+  
+  <!--
+
+  <joint name="topslider" type="fixed">
+    <origin rpy="0 0 0" xyz="0.32 -0.000187 0.0"/>
+    <parent link="scissortop"/>
+    <child link="suction"/>
+  </joint>
+
+  <joint name="scissorlift" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.27"/>
+    <parent link="upperplate"/>
+    <child link="scissortop"/>
+  </joint>
+
+-->s
+
+  <!--Please do not delete the below commented code. It will be used when we move the Scissorlift Mechanism-->
+
+  
+
+  <joint name="topslider" type="prismatic">
+    <origin rpy="0 0 0" xyz="0.32 -0.000187 0.0"/>
+    <parent link="scissortop"/>
+    <child link="suction"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="100" lower="0" upper="0.64" velocity="100"/>
+  </joint>
+
+  <joint name="scissorlift" type="prismatic">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.27"/>
+    <parent link="upperplate"/>
+    <child link="scissortop"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="100" lower="0.0" upper="1.72" velocity="100"/>
+  </joint>
+
+</robot>

@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+
+<robot>
+
+
+
+	<gazebo reference="lidar_sensor">
+		<material>Gazebo/Red</material>
+	</gazebo>
+
+
+
+	<gazebo reference="topcover">
+		<material>Gazebo/Turquoise</material>
+	</gazebo>
+	<gazebo reference="suction">
+		<material>Gazebo/Turquoise</material>
+	</gazebo>
+
+
+
+	<gazebo reference="base_link">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+	<gazebo reference="upperplate">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+
+
+
+	<gazebo reference="wheel_r">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+	<gazebo reference="wheel_l">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+	<gazebo reference="caster">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+
+
+	<gazebo reference="motor_r">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="motor_l">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="lidar_base">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<!--
+	<gazebo reference="realsense">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	-->
+	<gazebo reference="usbracket_front">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_front_l">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_mid_l">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_back_l">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_front_r">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_mid_r">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	<gazebo reference="usbracket_back_r">
+		<material>Gazebo/Black</material>
+	</gazebo>
+
+
+
+	<gazebo reference="sidecover">
+		<material>Gazebo/White</material>
+	</gazebo>
+	<gazebo reference="scissortop">
+		<material>Gazebo/White</material>
+	</gazebo>
+	<gazebo reference="scissorbase">
+		<material>Gazebo/White</material>
+	</gazebo>
+
+
+
+	<gazebo reference="ultrasonic_front">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_front_l">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_mid_l">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_back_l">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_front_r">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_mid_r">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	<gazebo reference="ultrasonic_back_r">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+
+
+
+</robot>
