@@ -832,7 +832,7 @@
 
   
 
-  <joint name="topslider" type="prismatic">
+  <joint name="topslider" type="fixed">
     <origin rpy="0 0 0" xyz="0.32 -0.000187 0.0"/>
     <parent link="scissortop"/>
     <child link="suction"/>

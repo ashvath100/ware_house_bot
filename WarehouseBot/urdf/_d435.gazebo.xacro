@@ -139,6 +139,11 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       	<pointCloud>false</pointCloud>
       	<pointCloudTopicName>depth/points</pointCloudTopicName>
       	<pointCloudCutoff>0.5</pointCloudCutoff>
+          <!-- <distortionK1>0</distortionK1>
+          <distortionK2>0</distortionK2>
+          <distortionK3>0</distortionK3>
+          <distortionT1>0</distortionT1>
+          <distortionT2>0</distortionT2> -->
       </plugin>
     </gazebo>
 
