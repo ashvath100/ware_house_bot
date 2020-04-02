@@ -24,7 +24,7 @@
   	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find warehouse_bot)/launch/config.rviz"/>
 
 
-     <node name="map_server" pkg="map_server" type="map_server" args="/home/ashvath/techno/src/ware_house_bot/WarehouseBot/maps/map.yaml"/>
+     <node name="map_server" pkg="map_server" type="map_server" args="-d $(find warehouse_bot)/maps/map.yaml"/>
 
 
  <node pkg="amcl" type="amcl" name="amcl">
