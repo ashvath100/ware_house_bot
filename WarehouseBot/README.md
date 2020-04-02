@@ -15,6 +15,10 @@
 **Rviz Config File:** warehouse_bot/launch/config.rviz
 </br>
 **Rviz Launch Command:** roslaunch warehouse_bot whbotrviz.launch
+</br>
+**Gazebo localization Launch Command:** roslaunch warehouse_bot localization.launch
+
+
  
 **Package Dependencies**
 Intel realsense gazebo plugin
