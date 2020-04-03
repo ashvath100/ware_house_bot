@@ -36,14 +36,14 @@ class Waypoint(State):
 
 
 if __name__ == '__main__':
-    rospy.init_node('patrol')
+    rospy.init_node('waypoints')
 
-    patrol = StateMachine('success')
-    with patrol:
+    waypoints = StateMachine('success')
+    with waypoints:
         for i,w in enumerate(waypoints):
             StateMachine.add(w[0],
                              Waypoint(w[1], w[2]),
                              transitions={'success':waypoints[(i + 1) % \
                              len(waypoints)][0]})
 
-    patrol.execute()
+    waypoints.execute()
