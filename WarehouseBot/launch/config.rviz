@@ -8,6 +8,7 @@ Panels:
         - /Status1
         - /RobotModel1
         - /LaserScan1
+        - /Map1
       Splitter Ratio: 0.46327683329582214
     Tree Height: 432
   - Class: rviz/Selection
@@ -281,11 +282,21 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -309,25 +320,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.267857551574707
+      Distance: 19.703744888305664
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.19387495517730713
-        Y: -0.26425936818122864
-        Z: 0.20804986357688904
+        X: 10.132230758666992
+        Y: 8.34476375579834
+        Z: 0.6184315085411072
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.38540002703666687
+      Pitch: 0.0703999474644661
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.413574695587158
+      Yaw: 3.923572301864624
     Saved: ~
 Window Geometry:
   Displays:
