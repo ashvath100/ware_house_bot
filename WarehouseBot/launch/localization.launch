@@ -12,10 +12,10 @@
     
   
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find warehouse_bot)/worlds/final.world"/>
+    <arg name="world_name" value="$(find warehouse_bot)/worlds/room.world"/>
     <arg name="paused" value="false" />
+    <arg name="use_sim_time" value="true"/>
     </include>
-
 
 
 
@@ -24,7 +24,7 @@
   	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find warehouse_bot)/launch/config.rviz"/>
 
 
-     <node name="map_server" pkg="map_server" type="map_server" args="$(find warehouse_bot)/maps/map.yaml"/>
+     <node name="map_server" pkg="map_server" type="map_server" args="$(find warehouse_bot)/maps/room.yaml"/>
 
 
  <node pkg="amcl" type="amcl" name="amcl">

@@ -17,6 +17,8 @@
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="paused" value="false" />
+    <arg name="world_name" value="$(find warehouse_bot)/worlds/room.world"/>
+
     </include>
 
   <arg name="camera"      default="camera"/>
